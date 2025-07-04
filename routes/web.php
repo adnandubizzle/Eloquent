@@ -32,7 +32,7 @@ Route::get('/', function () {
         // Author::select('name')->where('id','!=', 81)->get()    
 
     
-        
+        //
     
 
 
