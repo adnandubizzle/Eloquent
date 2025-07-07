@@ -67,7 +67,70 @@ Route::get('/', function () {
         // Book::with(['author:id,name'])->get()
 
 
-       return response()->json();
+    //has()
+        //authors who have at leat 1 book
+        //Author::has('books')->get()->count()
+
+    //doesntHave()
+        //Authors with no books
+        //Authot::doesntHave('books')->get();
+
+
+     //When()
+        //Conditional querry/ replacement of if conditions
+        // This is cleaner and safer than a bunch of if blocks.
+        
+        //      public function index(Request $request)
+        // {
+        //     $books = Book::query()
+        //         ->when($request->filled('title'), fn($q) =>
+        //             $q->where('title', 'like', '%' . $request->title . '%')
+        //         )
+        //         ->when($request->filled('author_id'), fn($q) =>
+        //             $q->where('author_id', $request->author_id)
+        //         )
+        //         ->get();
+
+        //             return response()->json($books);
+        // }
+
+
+    //chunk()
+        //Book::chunk(100, function ($books) {
+        //     foreach ($books as $book) {
+        //         echo $book->title;
+        //     }
+        // });
+
+        // Laravel will load only 100 books at a time
+
+        // Each chunk runs its own SQL query
+
+        // Great for batch processing, exports, syncing jobs, etc.
+   //cursor()
+//    foreach (Book::cursor() as $book) {
+//     echo $book->title;
+// }
+//Laravel does:
+
+// Runs the query under the hood
+
+// Fetches 1 row at a time from the database
+
+// Processes that row
+
+// Discards it
+
+// Then moves to the next
+
+// Memory-efficient
+// Fast for large data sets
+// Feels like a loop — but it’s powered by a PHP generator
+
+
+        
+
+       return response()->json(Author::selectRaw());
 
 });
 
